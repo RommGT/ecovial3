@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ecovial Ecuador - Contáctanos | Escuela de Conducción Profesional</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="contacto, escuela conducción, información, consultas, Ecuador" name="keywords">
+    <meta content="Contacta con Ecovial Ecuador - La mejor escuela de conducción profesional en Quito. Resolvemos todas tus consultas sobre nuestros cursos." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Contact Styles -->
+    <style>
+        .contact-info-card {
+            background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+            border-radius: 15px;
+            padding: 40px 30px;
+            color: white;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .contact-item h5 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-floating > .form-control {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .form-floating > .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .btn-send {
+            background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 15px 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .hours-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .time {
+            color: #0d6efd;
+            font-weight: 500;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-contact {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .quick-contact-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .quick-contact-item:hover {
+            background: #f8f9fa;
+            transform: translateY(-5px);
+        }
+
+        .quick-contact-item i {
+            font-size: 2.5rem;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        .quick-contact-item h6 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .quick-contact-item a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .quick-contact-item a:hover {
+            color: #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark text-light p-0">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>Quito, Pichincha, Ecuador</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Lun - Vie : 08:00 AM - 06:00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>(593) 2-255-0123</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center mx-n2">
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-square btn-link rounded-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+   <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+           <div class="logo-placeholder">
+    <img src="img/logo.png" alt="Ecovial Ecuador Logo" style="max-width: 250px; max-height: 70px; width: auto; height: auto; object-fit: contain;">
+</div>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                <a href="about.html" class="nav-item nav-link">Nosotros</a>
+                <a href="courses.html" class="nav-item nav-link">Cursos</a>
+                
+                <a href="contact.html" class="nav-item nav-link">Contacto</a>
+            </div>
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Aula Virtual<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">Contáctanos</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Páginas</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Contacto</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Quick Contact Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="quick-contact wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="quick-contact-item">
+                            <i class="fa fa-phone-alt"></i>
+                            <h6>Llámanos</h6>
+                            <a href="tel:+59322550123">(593) 2-255-0123</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="quick-contact-item">
+                            <i class="fa fa-envelope"></i>
+                            <h6>Email</h6>
+                            <a href="mailto:info@ecovialecuador.com">info@ecovialecuador.com</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="quick-contact-item">
+                            <i class="fa fa-whatsapp"></i>
+                            <h6>WhatsApp</h6>
+                            <a href="https://wa.me/593999123456">+593 99 912 3456</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quick Contact End -->
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="map-container" style="min-height: 450px;">
+                        <iframe class="w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.799614463489!2d-78.48678488573595!3d-0.1806532998242555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a107ca3c435%3A0x143bb1f1231e1c08!2sQuito%2C%20Ecuador!5e0!3m2!1sen!2s!4v1635789456123!5m2!1sen!2s"
+                        frameborder="0" style="min-height: 450px; border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="form-section">
+                        <h6 class="text-primary text-uppercase mb-2">Contáctanos</h6>
+                        <h1 class="display-6 mb-4">¿Tienes Alguna Consulta? Contáctanos</h1>
+                        <p class="mb-4">Estamos aquí para ayudarte en tu camino hacia convertirte en un conductor profesional. Completa el formulario y nos pondremos en contacto contigo lo antes posible.</p>
+                        
+                        <div class="success-message" id="successMessage">
+                            <i class="fa fa-check-circle me-2"></i>
+                            ¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.
+                        </div>
+
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Tu Nombre" required>
+                                        <label for="name">Tu Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Tu Email" required>
+                                        <label for="email">Tu Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Tu Teléfono" required>
+                                        <label for="phone">Tu Teléfono</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-control" id="course" required>
+                                            <option value="">Selecciona un curso</option>
+                                            <option value="Licencia Tipo C">Licencia Tipo C</option>
+                                            <option value="Licencia Tipo C1">Licencia Tipo C1</option>
+                                            <option value="Licencia Tipo D">Licencia Tipo D</option>
+                                            <option value="Licencia Tipo D1">Licencia Tipo D1</option>
+                                            <option value="Licencia Tipo E">Licencia Tipo E</option>
+                                            <option value="Licencia Tipo E1">Licencia Tipo E1</option>
+                                            <option value="Información General">Información General</option>
+                                        </select>
+                                        <label for="course">Curso de Interés</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="subject" placeholder="Asunto" required>
+                                        <label for="subject">Asunto</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Déjanos tu mensaje aquí" id="message" style="height: 150px" required></textarea>
+                                        <label for="message">Mensaje</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary btn-send w-100" type="submit">
+                                        <i class="fa fa-paper-plane me-2"></i>Enviar Mensaje
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Contact Info Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="contact-info-card">
+                        <h3 class="mb-4 text-white">Información de Contacto</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <i class="fa fa-map-marker-alt"></i>
+                                    <h5>Nuestra Ubicación</h5>
+                                    <p>Av. 10 de Agosto N24-253<br>Quito, Pichincha, Ecuador</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <i class="fa fa-phone-alt"></i>
+                                    <h5>Teléfonos</h5>
+                                    <p>Principal: (593) 2-255-0123<br>WhatsApp: +593 99 912 3456</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <i class="fa fa-envelope"></i>
+                                    <h5>Email</h5>
+                                    <p>info@ecovialecuador.com<br>admisiones@ecovialecuador.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <i class="fa fa-globe"></i>
+                                    <h5>Redes Sociales</h5>
+                                    <p>@EcovialEcuador<br>Síguenos en todas las plataformas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="hours-section">
+                        <h4 class="text-primary mb-4">Horarios de Atención</h4>
+                        <div class="hours-item">
+                            <span class="day">Lunes - Viernes</span>
+                            <span class="time">08:00 AM - 06:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Sábados</span>
+                            <span class="time">09:00 AM - 02:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Domingos</span>
+                            <span class="time">Cerrado</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Feriados</span>
+                            <span class="time">Consultar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hours-section">
+                        <h5 class="text-primary mb-3">Atención Virtual</h5>
+                        <p class="mb-3">También ofrecemos consultas virtuales para tu comodidad:</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-check text-primary me-2"></i>Videollamadas programadas</li>
+                            <li><i class="fa fa-check text-primary me-2"></i>WhatsApp Business</li>
+                            <li><i class="fa fa-check text-primary me-2"></i>Chat en línea</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Info End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Contáctanos</h4>
+                    <h2 class="text-primary mb-4"><i class="fa fa-car text-white me-2"></i>Ecovial Ecuador</h2>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Quito, Pichincha, Ecuador</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(593) 2-255-0123</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@ecovialecuador.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Enlaces Rápidos</h4>
+                    <a class="btn btn-link" href="">Sobre Nosotros</a>
+                    <a class="btn btn-link" href="">Contáctanos</a>
+                    <a class="btn btn-link" href="">Nuestros Servicios</a>
+                    <a class="btn btn-link" href="">Términos y Condiciones</a>
+                    <a class="btn btn-link" href="">Soporte</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Nuestros Cursos</h4>
+                    <a class="btn btn-link" href="">Licencia Tipo C</a>
+                    <a class="btn btn-link" href="">Licencia Tipo C1</a>
+                    <a class="btn btn-link" href="">Licencia Tipo D</a>
+                    <a class="btn btn-link" href="">Licencia Tipo D1</a>
+                    <a class="btn btn-link" href="">Licencia Tipo E</a>
+                    <a class="btn btn-link" href="">Licencia Tipo E1</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Boletín Informativo</h4>
+                    <p>Suscríbete para recibir noticias y novedades sobre nuestros cursos.</p>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3 border-0" placeholder="Tu Correo Electrónico">
+                            <button class="btn btn-primary">Suscribirse</button>
+                        </div>
+                    </form>
+                    <h6 class="text-white mt-4 mb-3">Síguenos</h6>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="#">Ecovial Ecuador</a>, Todos los Derechos Reservados.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Diseñado por <a href="https://htmlcodex.com">HTML Codex</a>
+                    <br>Distribuido por: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Contact Form Script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular envío del formulario
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Cambiar texto del botón
+            submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin me-2"></i>Enviando...';
+            submitBtn.disabled = true;
+            
+            // Simular tiempo de envío
+            setTimeout(() => {
+                // Mostrar mensaje de éxito
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Limpiar formulario
+                this.reset();
+                
+                // Restaurar botón
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Ocultar mensaje después de 5 segundos
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+                
+                // Scroll al mensaje de éxito
+                document.getElementById('successMessage').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+            }, 2000);
+        });
+
+        // Validación en tiempo real
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() === '') {
+                    this.style.borderColor = '#dc3545';
+                } else {
+                    this.style.borderColor = '#28a745';
+                }
+            });
+        });
+
+        // Validación de email
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.value)) {
+                this.style.borderColor = '#dc3545';
+            } else {
+                this.style.borderColor = '#28a745';
+            }
+        });
+
+        // Validación de teléfono
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function() {
+            // Permitir solo números, espacios, guiones y paréntesis
+            this.value = this.value.replace(/[^0-9\s\-\(\)\+]/g, '');
+        });
+
+        // Efecto de typing para el título
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+
+        // Aplicar efecto de escritura cuando la página carga
+        document.addEventListener('DOMContentLoaded', function() {
+            // Agregar animaciones adicionales si es necesario
+            console.log('Página de contacto de Ecovial Ecuador cargada correctamente');
+        });
+
+        // Función para copiar información de contacto al portapapeles
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Mostrar feedback visual
+                const originalText = element.innerText;
+                element.innerText = '¡Copiado!';
+                element.style.color = '#28a745';
+                
+                setTimeout(() => {
+                    element.innerText = originalText;
+                    element.style.color = '';
+                }, 2000);
+            });
+        }
+
+        // Agregar eventos de clic para copiar información
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+            const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+            
+            phoneLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const phoneNumber = this.innerText;
+                    copyToClipboard(phoneNumber, this);
+                });
+            });
+            
+            emailLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const email = this.innerText;
+                    copyToClipboard(email, this);
+                });
+            });
+        });
+
+        // Función para abrir WhatsApp
+        function openWhatsApp() {
+            const message = encodeURIComponent('Hola, me interesa información sobre los cursos de Ecovial Ecuador');
+            window.open(`https://wa.me/593999123456?text=${message}`, '_blank');
+        }
+
+        // Agregar evento al enlace de WhatsApp
+        document.addEventListener('DOMContentLoaded', function() {
+            const whatsappLink = document.querySelector('a[href^="https://wa.me/"]');
+            if (whatsappLink) {
+                whatsappLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openWhatsApp();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

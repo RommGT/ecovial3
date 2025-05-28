@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ecovial Ecuador - Nuestros Cursos de Conducción Profesional</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="escuela conducción, licencias profesionales, conductor profesional Ecuador" name="keywords">
+    <meta content="Ecovial Ecuador - Cursos especializados en conducción profesional con más de 15 años de experiencia" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Modal Styles -->
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .course-modal {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .course-modal h2 {
+            color: #0d6efd;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .course-modal .price {
+            background: #0d6efd;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-table th,
+        .details-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .details-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #0d6efd;
+        }
+
+        .details-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .requirements-list li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .modal-btn {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .course-description {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #0d6efd;
+        }
+
+        .course-stats {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .stats-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0d6efd;
+            display: block;
+        }
+
+        .stats-text {
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="course-modal">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div id="modalContent">
+                <!-- Modal content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark text-light p-0">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>Quito, Pichincha, Ecuador</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Lun - Vie : 08:00 AM - 06:00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>(593) 2-255-0123</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center mx-n2">
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-square btn-link rounded-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+           <div class="logo-placeholder">
+    <img src="img/logo.png" alt="Ecovial Ecuador Logo" style="max-width: 250px; max-height: 70px; width: auto; height: auto; object-fit: contain;">
+</div>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                <a href="about.html" class="nav-item nav-link">Nosotros</a>
+                <a href="courses.html" class="nav-item nav-link">Cursos</a>
+                
+                <a href="contact.html" class="nav-item nav-link">Contacto</a>
+            </div>
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Aula Virtual<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">Nuestros Cursos</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Páginas</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Cursos</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Course Statistics Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="course-stats wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row text-center">
+                    <div class="col-lg-3 col-md-6 stats-item">
+                        <span class="stats-number">2500+</span>
+                        <p class="stats-text">Estudiantes Graduados</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 stats-item">
+                        <span class="stats-number">95%</span>
+                        <p class="stats-text">Tasa de Aprobación</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 stats-item">
+                        <span class="stats-number">25+</span>
+                        <p class="stats-text">Instructores Certificados</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 stats-item">
+                        <span class="stats-number">15</span>
+                        <p class="stats-text">Años de Experiencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Course Statistics End -->
+
+    <!-- Courses Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="text-primary text-uppercase mb-2">Cursos Especializados</h6>
+                <h1 class="display-6 mb-4">Nuestros Cursos te Capacitan para Conducir Profesionalmente</h1>
+                <p class="text-muted">Ofrecemos formación integral en todas las categorías de licencias profesionales con instructores certificados y metodología actualizada.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100 shadow">
+                        <div class="text-center p-4 pt-0">
+                            <div class="d-inline-block bg-primary text-white fs-5 py-1 px-4 mb-4">$480</div>
+                            <h5 class="mb-3">Licencia Tipo C</h5>
+                            <p>Formación para conducir vehículos de carga pesada. Incluye prácticas intensivas y certificación oficial.</p>
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Profesional</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>6 Semanas</li>
+                            </ol>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="img/courses-1.jpg" alt="">
+                            <div class="courses-overlay">
+                                <a class="btn btn-outline-primary border-2" href="#" onclick="openModal('tipoC')">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100 shadow">
+                        <div class="text-center p-4 pt-0">
+                            <div class="d-inline-block bg-primary text-white fs-5 py-1 px-4 mb-4">$380</div>
+                            <h5 class="mb-3">Licencia Tipo C1</h5>
+                            <p>Capacitación para vehículos de carga media. Ideal para transporte comercial urbano y delivery.</p>
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Intermedio</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>4 Semanas</li>
+                            </ol>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="img/courses-2.jpg" alt="">
+                            <div class="courses-overlay">
+                                <a class="btn btn-outline-primary border-2" href="#" onclick="openModal('tipoC1')">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100 shadow">
+                        <div class="text-center p-4 pt-0">
+                            <div class="d-inline-block bg-primary text-white fs-5 py-1 px-4 mb-4">$520</div>
+                            <h5 class="mb-3">Licencia Tipo D</h5>
+                            <p>Capacitación para conductores de autobuses. Incluye atención al cliente y normativas de transporte público.</p>
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Avanzado</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>8 Semanas</li>
+                            </ol>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="img/courses-3.jpg" alt="">
+                            <div class="courses-overlay">
+                                <a class="btn btn-outline-primary border-2" href="#" onclick="openModal('tipoD')">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100 shadow">
+                        <div class="text-center p-4 pt-0">
+                            <div class="d-inline-block bg-primary text-white fs-5 py-1 px-4 mb-4">$420</div>
+                            <h5 class="mb-3">Licencia Tipo D1</h5>
+                            <p>Especialización en minibuses para transporte turístico, escolar y ejecutivo hasta 16 pasajeros.</p>
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Profesional</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>6 Semanas</li>
+                            </ol>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="img/courses-1.jpg" alt="">
+                            <div class="courses-overlay">
+                                <a class="btn btn-outline-primary border-2" href="#" onclick="openModal('tipoD1')">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
+                    <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100 shadow">
+                        <div class="text-center p-4 pt-0">
+                            <div class="d-inline-block bg-primary text-white fs-5 py-1 px-4 mb-4">$320</div>
+                            <h5 class="mb-3">Licencia Tipo E</h5>
+                            <p>Formación para conductores de taxi. Incluye geografía urbana y excelente servicio al cliente.</p>
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Intermedio</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>4 Semanas</li>
+                            </ol>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="img/courses-2.jpg" alt="">
+                            <div class="courses-overlay">
+                                <a class="btn btn-outline-primary border-2" href="#" onclick="openModal('tipoE')">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="1.1s">
+                    <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100 shadow">
+                        <div class="text-center p-4 pt-0">
+                            <div class="d-inline-block bg-primary text-white fs-5 py-1 px-4 mb-4">$380</div>
+                            <h5 class="mb-3">Licencia Tipo E1</h5>
+                            <p>Formación especializada en transporte escolar con enfoque en seguridad infantil y primeros auxilios.</p>
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Especializado</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>5 Semanas</li>
+                            </ol>
+                        </div>
+                        <div class="position-relative mt-auto">
+                            <img class="img-fluid" src="img/courses-3.jpg" alt="">
+                            <div class="courses-overlay">
+                                <a class="btn btn-outline-primary border-2" href="#" onclick="openModal('tipoE1')">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Courses End -->
+
+    <!-- Appointment Form Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-primary text-center p-5 rounded">
+                        <h1 class="mb-4 text-white">Programa tu Cita</h1>
+                        <p class="text-white mb-4">¿Listo para comenzar tu carrera como conductor profesional? Agenda una cita con nuestros asesores.</p>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="gname" placeholder="Tu Nombre">
+                                        <label for="gname">Tu Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control border-0" id="gmail" placeholder="Tu Email">
+                                        <label for="gmail">Tu Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <select class="form-control border-0" id="cname">
+                                            <option>Tipo de Curso</option>
+                                            <option>Licencia Tipo C</option>
+                                            <option>Licencia Tipo C1</option>
+                                            <option>Licencia Tipo D</option>
+                                            <option>Licencia Tipo D1</option>
+                                            <option>Licencia Tipo E</option>
+                                            <option>Licencia Tipo E1</option>
+                                        </select>
+                                        <label for="cname">Tipo de Curso</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="cage" placeholder="Teléfono">
+                                        <label for="cage">Teléfono</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0" placeholder="Déjanos un mensaje" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Mensaje</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-dark w-100 py-3" type="submit">Enviar Solicitud</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment Form End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Contáctanos</h4>
+                    <h2 class="text-primary mb-4"><i class="fa fa-car text-white me-2"></i>Ecovial Ecuador</h2>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Quito, Pichincha, Ecuador</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>(593) 2-255-0123</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@ecovialecuador.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Enlaces Rápidos</h4>
+                    <a class="btn btn-link" href="">Sobre Nosotros</a>
+                    <a class="btn btn-link" href="">Contáctanos</a>
+                    <a class="btn btn-link" href="">Nuestros Servicios</a>
+                    <a class="btn btn-link" href="">Términos y Condiciones</a>
+                    <a class="btn btn-link" href="">Soporte</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Nuestros Cursos</h4>
+                    <a class="btn btn-link" href="">Licencia Tipo C</a>
+                    <a class="btn btn-link" href="">Licencia Tipo C1</a>
+                    <a class="btn btn-link" href="">Licencia Tipo D</a>
+                    <a class="btn btn-link" href="">Licencia Tipo D1</a>
+                    <a class="btn btn-link" href="">Licencia Tipo E</a>
+                    <a class="btn btn-link" href="">Licencia Tipo E1</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Boletín Informativo</h4>
+                    <p>Suscríbete para recibir noticias y novedades sobre nuestros cursos.</p>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3 border-0" placeholder="Tu Correo Electrónico">
+                            <button class="btn btn-primary">Suscribirse</button>
+                        </div>
+                    </form>
+                    <h6 class="text-white mt-4 mb-3">Síguenos</h6>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="#">Ecovial Ecuador</a>, Todos los Derechos Reservados.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Diseñado por <a href="https://htmlcodex.com">HTML Codex</a>
+                    <br>Distribuido por: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Custom Modal Script -->
+    <script>
+        const courseData = {
+            tipoC: {
+                title: "Licencia Tipo C - Carga Pesada",
+                price: "$480",
+                description: "Capacítate para conducir vehículos de carga pesada con peso bruto superior a 3.5 toneladas. Ideal para quienes desean trabajar en transporte de mercancías y logística.",
+                details: {
+                    "Duración": "6 semanas (48 horas académicas)",
+                    "Modalidad": "Presencial",
+                    "Horarios": "Lunes a Viernes: 8:00 AM - 12:00 PM o 2:00 PM - 6:00 PM",
+                    "Edad Mínima": "21 años",
+                    "Vehículos": "Camiones de carga pesada (+3.5 toneladas)",
+                    "Certificación": "Oficial reconocida nacionalmente"
+                },
+                requirements: [
+                    "Licencia tipo B vigente por mínimo 2 años",
+                    "Certificado médico actualizado",
+                    "Certificado de antecedentes penales",
+                    "Copia de cédula y papeleta de votación"
+                ]
+            },
+            tipoC1: {
+                title: "Licencia Tipo C1 - Carga Media",
+                price: "$380",
+                description: "Perfecta para conducir vehículos de carga media entre 3.5 y 7.5 toneladas. Ideal para delivery, mudanzas y transporte comercial urbano.",
+                details: {
+                    "Duración": "4 semanas (32 horas académicas)",
+                    "Modalidad": "Presencial",
+                    "Horarios": "Lunes a Viernes: 8:00 AM - 12:00 PM o 2:00 PM - 6:00 PM",
+                    "Edad Mínima": "18 años",
+                    "Vehículos": "Camiones medianos (3.5 - 7.5 toneladas)",
+                    "Certificación": "Oficial reconocida nacionalmente"
+                },
+                requirements: [
+                    "Licencia tipo B vigente por mínimo 1 año",
+                    "Certificado médico actualizado",
+                    "Certificado de antecedentes penales",
+                    "Copia de cédula y papeleta de votación"
+                ]
+            },
+            tipoD: {
+                title: "Licencia Tipo D - Autobuses",
+                price: "$520",
+                description: "Formación integral para conductores de autobuses de servicio público. Incluye atención al cliente y normativas del transporte público.",
+                details: {
+                    "Duración": "8 semanas (64 horas académicas)",
+                    "Modalidad": "Presencial",
+                    "Horarios": "Lunes a Viernes: 7:00 AM - 11:00 AM o 3:00 PM - 7:00 PM",
+                    "Edad Mínima": "23 años",
+                    "Vehículos": "Autobuses de transporte público",
+                    "Certificación": "Oficial reconocida nacionalmente"
+                },
+                requirements: [
+                    "Licencia tipo B vigente por mínimo 3 años",
+                    "Certificado médico y psicológico",
+                    "Certificado de antecedentes penales",
+                    "Curso de primeros auxilios"
+                ]
+            },
+            tipoD1: {
+                title: "Licencia Tipo D1 - Minibuses",
+                price: "$420",
+                description: "Especialízate en conducción de minibuses hasta 16 pasajeros. Perfecta para transporte turístico, escolar y ejecutivo.",
+                details: {
+                    "Duración": "6 semanas (48 horas académicas)",
+                    "Modalidad": "Presencial",
+                    "Horarios": "Lunes a Viernes: 8:00 AM - 12:00 PM o 2:00 PM - 6:00 PM",
+                    "Edad Mínima": "21 años",
+                    "Vehículos": "Minibuses hasta 16 pasajeros",
+                    "Certificación": "Oficial reconocida nacionalmente"
+                },
+                requirements: [
+                    "Licencia tipo B vigente por mínimo 2 años",
+                    "Certificado médico actualizado",
+                    "Certificado de antecedentes penales",
+                    "Copia de cédula y papeleta de votación"
+                ]
+            },
+            tipoE: {
+                title: "Licencia Tipo E - Taxi",
+                price: "$320",
+                description: "Conviértete en conductor profesional de taxi. Incluye conocimiento de la ciudad, tarifas y excelente servicio al cliente.",
+                details: {
+                    "Duración": "4 semanas (32 horas académicas)",
+                    "Modalidad": "Semi-presencial",
+                    "Horarios": "Flexible: Presencial y virtual",
+                    "Edad Mínima": "21 años",
+                    "Vehículos": "Vehículos de taxi",
+                    "Certificación": "Oficial reconocida nacionalmente"
+                },
+                requirements: [
+                    "Licencia tipo B vigente por mínimo 2 años",
+                    "Certificado médico actualizado",
+                    "Certificado de antecedentes penales",
+                    "Curso de geografía urbana"
+                ]
+            },
+            tipoE1: {
+                title: "Licencia Tipo E1 - Transporte Escolar",
+                price: "$380",
+                description: "Especialización en transporte escolar e institucional. Enfoque en seguridad infantil y responsabilidad social.",
+                details: {
+                    "Duración": "5 semanas (40 horas académicas)",
+                    "Modalidad": "Presencial",
+                    "Horarios": "Lunes a Viernes: 8:00 AM - 12:00 PM",
+                    "Edad Mínima": "21 años",
+                    "Vehículos": "Transporte escolar e institucional",
+                    "Certificación": "Oficial reconocida nacionalmente"
+                },
+                requirements: [
+                    "Licencia tipo B vigente por mínimo 2 años",
+                    "Certificado médico y psicológico",
+                    "Antecedentes penales limpios",
+                    "Curso de primeros auxilios"
+                ]
+            }
+        };
+
+        function openModal(courseType) {
+            const course = courseData[courseType];
+            if (!course) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <h2>${course.title}</h2>
+                <div class="price">${course.price}</div>
+                
+                <div class="course-description">
+                    <p>${course.description}</p>
+                </div>
+
+                <h4 style="color: #0d6efd; margin-top: 30px;">Detalles del Curso</h4>
+                <table class="details-table">
+                    ${Object.entries(course.details).map(([key, value]) => `
+                        <tr>
+                            <th>${key}</th>
+                            <td>${value}</td>
+                        </tr>
+                    `).join('')}
+                </table>
+
+                <h4 style="color: #0d6efd; margin-top: 30px;">Requisitos</h4>
+                <ul class="requirements-list">
+                    ${course.requirements.map(req => `<li>${req}</li>`).join('')}
+                </ul>
+
+                <div style="text-align: center;">
+                    <button class="modal-btn" onclick="contactUs('${course.title}')">
+                        <i class="fa fa-phone me-2"></i>Inscribirse Ahora
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function contactUs(courseTitle) {
+            // Puedes personalizar esta función para manejar la inscripción
+            alert(`¡Excelente elección! Te pondremos en contacto para el curso: ${courseTitle}\n\nLlama al (593) 2-255-0123 o envía un email a info@ecovialecuador.com`);
+            closeModal();
+        }
+
+        // Cerrar modal al hacer click fuera de él
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
